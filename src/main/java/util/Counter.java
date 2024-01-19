@@ -38,14 +38,47 @@ public class Counter {
 		_ctr = -99;
 	}
 
-	// TODO: dev2- method for increment to closest prime number
-	public void incrementToPrime() {
-		_ctr = -99;
+       // Method for incrementing to the closest prime number
+	   public void incrementToPrime() {
+		_ctr = getNextPrime(_ctr);
 	}
 
-	// TODO: dev2- method for decrement to closest prime number
+	// Method for decrementing to the closest prime number
 	public void decrementToPrime() {
-		_ctr = -99;
+		_ctr = getPreviousPrime(_ctr);
+	}
+
+	// Helper method to get the next prime number
+	private int getNextPrime(int num) {
+		while (true) {
+			num++;
+			if (isPrime(num)) {
+				return num;
+			}
+		}
+	}
+
+	// Helper method to get the previous prime number
+	private int getPreviousPrime(int num) {
+		while (true) {
+			num--;
+			if (isPrime(num)) {
+				return num;
+			}
+		}
+	}
+
+	// Helper method to check if a number is prime
+	private boolean isPrime(int num) {
+		if (num <= 1) {
+			return false;
+		}
+		for (int i = 2; i <= Math.sqrt(num); i++) {
+			if (num % i == 0) {
+				return false;
+			}
+		}
+		return true;
 	}
 
 	// TODO: dev3- count the frequency of word in sentence,
